@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudnotes-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudnotes-db
+  template:
+    metadata:
+      labels:
+        app: cloudnotes-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: "cloudnotes"
+            - name: POSTGRES_PASSWORD
+              value: "devpassword123"
+            - name: POSTGRES_DB
+              value: "cloudnotesdb"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudnotes-db
+spec:
+  selector:
+    app: cloudnotes-db
+  ports:
+    - port: 5432
+      targetPort: 5432
