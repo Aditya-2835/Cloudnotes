@@ -4,3 +4,7 @@ __pycache__/
 *.pyc
 .DS_Store
 notes.db
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/*.tfvars
