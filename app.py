@@ -1,8 +1,10 @@
 import os
 import psycopg2
 from flask import Flask, jsonify, request
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 DB_HOST = os.environ.get("DB_HOST", "localhost")
 DB_NAME = os.environ.get("DB_NAME", "cloudnotesdb")
