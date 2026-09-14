@@ -8,3 +8,6 @@ terraform/.terraform/
 terraform/*.tfstate
 terraform/*.tfstate.backup
 terraform/*.tfvars
+kubectl
+minikube-linux-arm64
+minikube-linux-*
